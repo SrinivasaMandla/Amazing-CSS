@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding-top: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            background-color: white;
+        }
+        .outer-circle {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 67deg,
+                rgb(250, 14, 108) 0deg 109deg,
+                white 109deg 119deg,
+                rgb(3, 191, 182) 119deg 228deg,
+                white 228deg 238deg,
+                rgb(255, 183, 0) 238deg 350deg,
+                white 350deg 360deg
+              );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .outer-circle::after{
+            content: '';
+            padding: 30px;
+            position: absolute;
+            background-color: rgb(3, 191, 182);
+            border-radius: 50%;
+            bottom: 56px;
+            left: 35px;
+        }
+        .inner-circle {
+            width: 190px;
+            height:190px;
+            background-color: white;
+            border-radius: 50%;
+            position: relative;
+        }
+        .inner-circle::before{
+            content: '';
+            padding: 30px;
+            position: absolute;
+            background-color: rgb(250, 14, 108);
+            border-radius: 50%;
+            bottom: 30px;
+            right: 3px;
+        }
+        .inner-circle::after{
+            content: '';
+            padding: 30px;
+            position: absolute;
+            background-color: rgb(255, 183, 0);
+            border-radius: 50%;
+            top: -7px;
+            left: 65px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer-circle">
+        <div class="inner-circle"></div>
+    </div>
+</body>
+
+</html>
