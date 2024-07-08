@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .bulb {
+            width: 400px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .bulb-body {
+            border: 8px solid;
+            width: 55%;
+            height: 55%;
+            position: relative;
+            border-radius: 50%;
+            background-color: #9d9d9d;
+        }
+
+        .bulb-body::before {
+            border: 8px solid;
+            border-top: none;
+            border-radius: 0px 0px 5px 5px;
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            left: 21.5%;
+            width: 50%;
+            height: 18%;
+            background-color: #9d9d9d;
+        }
+
+        .bulb-body::after {
+            content: '';
+            position: absolute;
+            border-right: 8px solid;
+            border-radius: 50%;
+            width: 80%;
+            height: 80%;
+            top: 7%;
+            left: 7%;
+            transform: rotateZ(-30deg);
+        }
+
+        .bulb-line {
+            border: 8px solid;
+            border-radius: 20px;
+            position: absolute;
+            bottom: 7%;
+            width: 27%;
+            height: 1%;
+        }
+
+        .bulb-line::after {
+            content: '';
+            border: 8px solid;
+            border-radius: 20px;
+            padding: 2px;
+            position: absolute;
+            bottom: -35px;
+            left: 6%;
+            width: 70%;
+        }
+
+        .bulb-light,
+        .bulb-light-right {
+            display: none;
+            border: 4px solid;
+            border-radius: 20px;
+            height: 10%;
+            position: absolute;
+            top: 2%;
+        }
+
+        .bulb-light::before,
+        .bulb-light::after,
+        .bulb-light-right::after,
+        .bulb-light-right::before {
+            content: '';
+            border: 4px solid;
+            border-radius: 20px;
+            height: 100%;
+            position: absolute;
+            background-color: black;
+        }
+
+        .bulb-light::before {
+            right: 80px;
+            top: 40%;
+            transform: rotateZ(-30deg);
+        }
+
+        .bulb-light::after {
+            right: 140px;
+            top: 180%;
+            background-color: black;
+            transform: rotateZ(-50deg);
+        }
+
+        .bulb-light-right::after {
+            left: 80px;
+            top: 40%;
+            background-color: black;
+            transform: rotateZ(35deg);
+        }
+
+        .bulb-light-right::before {
+            left: 140px;
+            top: 180%;
+            background-color: black;
+            transform: rotateZ(50deg);
+        }
+
+        button {
+            border: none;
+            border-radius: 5px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            background-color: orange;
+            color: white;
+            padding: 8px 20px;
+            text-align: center;
+            position: absolute;
+            bottom: -15%;
+            cursor: pointer;
+        }
+
+        .bulb-on .bulb-body {
+            background-color: rgb(253, 234, 28);
+        }
+
+        .bulb-on .bulb-body::before {
+            background-color: rgb(253, 234, 28);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bulb" id="bulb">
+        <div class="bulb-light" id="bulbLight"></div>
+        <div class="bulb-light-right" id="bulbLightRight"></div>
+        <div class="bulb-body" id="bulbBody"></div>
+        <div class="bulb-line"></div>
+        <button onclick="changeBulb()">On/Off</button>
+    </div>
+
+    <script>
+        var isLightOn = false;
+
+        function changeBulb() {
+            var bulb = document.getElementById('bulb');
+            var bulbLight = document.getElementById('bulbLight');
+            var bulbLightRight = document.getElementById('bulbLightRight');
+
+            if (isLightOn) {
+                // Turn off
+                bulbLight.style.display = 'none';
+                bulbLightRight.style.display = 'none';
+                bulb.classList.remove('bulb-on');
+                isLightOn = false;
+            } else {
+                // Turn on
+                bulbLight.style.display = 'block';
+                bulbLightRight.style.display = 'block';
+                bulb.classList.add('bulb-on');
+                isLightOn = true;
+            }
+        }
+    </script>
+</body>
+
+</html>
